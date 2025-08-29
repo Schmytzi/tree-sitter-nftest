@@ -632,7 +632,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": "[^\"\\\\\\n]"
+                "value": "[^\"\\\\]"
               }
             ]
           }
@@ -654,17 +654,17 @@
           "type": "FIELD",
           "name": "groovy",
           "content": {
-            "type": "REPEAT",
+            "type": "REPEAT1",
             "content": {
               "type": "CHOICE",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "groovy_code"
+                  "name": "escape_sequence"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "brace_block"
+                  "type": "PATTERN",
+                  "value": "[^\"\\\\]"
                 }
               ]
             }

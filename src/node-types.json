@@ -93,11 +93,7 @@
         "required": false,
         "types": [
           {
-            "type": "brace_block",
-            "named": true
-          },
-          {
-            "type": "groovy_code",
+            "type": "escape_sequence",
             "named": true
           }
         ]

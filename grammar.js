@@ -142,9 +142,9 @@ module.exports = grammar({
 
     double_string: $ => seq('"', repeat(choice($.escape_sequence, /[^"\\\n]/)), '"'),
     single_string: $ => seq('\'', repeat(choice($.escape_sequence, /[^'\\\n]/)), '\''),
-    triple_string: $ => seq('"""', repeat(choice($.escape_sequence, /[^"\\\n]/)), '"""'),
+    triple_string: $ => seq('"""', repeat(choice($.escape_sequence, /[^"\\]/)), '"""'),
 
-    groovy_triple_string: $ => seq('"""', field('groovy', repeat(choice($.groovy_code, $.brace_block))), '"""'),
+    groovy_triple_string: $ => seq('"""', field('groovy', repeat1(choice($.escape_sequence, /[^"\\]/))), '"""'),
 
     escape_sequence: $ => token(seq('\\', /./)),
 
