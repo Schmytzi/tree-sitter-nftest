@@ -660,11 +660,11 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "escape_sequence"
+                  "name": "groovy_code"
                 },
                 {
-                  "type": "PATTERN",
-                  "value": "[^\\\\\\n]"
+                  "type": "SYMBOL",
+                  "name": "brace_block"
                 }
               ]
             }
