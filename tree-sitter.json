@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "nftest",
+      "camelcase": "nftest",
+      "title": "nf-test",
+      "scope": "source.nftest",
+      "file-types": [
+        "nf.test"
+      ],
+      "injection-regex": "^nftest$",
+      "class-name": "TreeSitterNftest"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "nf-test suites",
+    "authors": [
+      {
+        "name": "Daniel Schmitz",
+        "email": "me@schmytzi.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/Schmytzi/treesitter-nftest"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
