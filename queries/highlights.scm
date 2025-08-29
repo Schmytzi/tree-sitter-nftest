@@ -15,7 +15,7 @@
  "params"
 ] @keyword.function
 
-( [(name_stmt) (unit_stmt) (tag_stmt) (options_stmt) (config_stmt) ]
+( [(name_stmt) (unit_stmt) (tag_stmt) (options_stmt) (config_stmt) (profile_stmt) ]
   (_) @keyword.directive
   (string)
 )
@@ -25,7 +25,6 @@
 
 (double_string) @string
 (single_string) @string
-(triple_string) @string
 
 (line_comment) @comment
 (block_comment) @comment

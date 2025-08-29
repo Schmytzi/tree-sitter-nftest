@@ -1,24 +1,5 @@
 [
   {
-    "type": "assignment",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "brace_block",
     "named": true,
     "fields": {},
@@ -84,33 +65,6 @@
     }
   },
   {
-    "type": "expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "groovy_block",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "groovy_block",
     "named": true,
     "fields": {
@@ -133,7 +87,18 @@
   {
     "type": "groovy_triple_string",
     "named": true,
-    "fields": {}
+    "fields": {
+      "groovy": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "escape_sequence",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "invocable_unit",
@@ -182,29 +147,6 @@
     }
   },
   {
-    "type": "nested_params_map",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "assignment",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "nested_params_map",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "options_stmt",
     "named": true,
     "fields": {},
@@ -224,15 +166,26 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
-          "type": "assignment",
+          "type": "groovy_block",
           "named": true
-        },
+        }
+      ]
+    }
+  },
+  {
+    "type": "profile_stmt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
         {
-          "type": "nested_params_map",
+          "type": "string",
           "named": true
         }
       ]
@@ -373,7 +326,7 @@
     "root": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
@@ -504,7 +457,7 @@
         "required": true,
         "types": [
           {
-            "type": "quoted_identifier",
+            "type": "string",
             "named": true
           }
         ]
@@ -547,6 +500,10 @@
           "named": true
         },
         {
+          "type": "profile_stmt",
+          "named": true
+        },
+        {
           "type": "script_stmt",
           "named": true
         },
@@ -586,7 +543,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "invocation",
@@ -624,15 +581,7 @@
     "named": false
   },
   {
-    "type": ".",
-    "named": false
-  },
-  {
     "type": ":",
-    "named": false
-  },
-  {
-    "type": "=",
     "named": false
   },
   {
@@ -690,10 +639,6 @@
     "named": false
   },
   {
-    "type": "number",
-    "named": true
-  },
-  {
     "type": "options",
     "named": false
   },
@@ -703,6 +648,10 @@
   },
   {
     "type": "process",
+    "named": false
+  },
+  {
+    "type": "profile",
     "named": false
   },
   {

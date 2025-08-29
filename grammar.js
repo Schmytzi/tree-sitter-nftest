@@ -19,7 +19,7 @@ module.exports = grammar({
 
   rules: {
     // Entry ---------------------------------------------------------------
-    source_file: $ => repeat1($.suite),
+    source_file: $ => $.suite,
 
     suite: $ => seq(
       choice('nextflow_process', 'nextflow_workflow', 'nextflow_pipeline', 'nextflow_function'),
@@ -82,12 +82,12 @@ module.exports = grammar({
       '}'
     ),
 
-    test_header: $ => seq('test', '(', field('name', $.quoted_identifier), ')'),
+    test_header: $ => seq('test', '(', field('name', $.string), ')'),
 
     // When ----------------------------------------------------------------
     when_block: $ => seq(
       'when', '{',
-      repeat(choice(
+      repeat1(choice(
         $.params_block,
         $.invocation,
       )),
@@ -96,31 +96,7 @@ module.exports = grammar({
 
     params_block: $ => seq(
       'params',
-      '{',
-      repeat(choice(
-        $.nested_params_map,
-        $.assignment
-      )),
-      '}'
-    ),
-
-    nested_params_map: $ => seq(
-      $.identifier,
-      '{',
-      repeat(choice(
-        $.nested_params_map,
-        $.assignment
-      )),
-      '}'
-    ),
-
-    assignment: $ => seq($.identifier, '=', $.expression),
-
-    expression: $ => choice(
-      $.string,
-      $.number,
-      seq($.identifier, repeat(seq('.', $.identifier))), // Allow member access like obj.prop.another
-      $.groovy_block // Allow complex expressions in Groovy syntax in braces
+      $.groovy_block // Assuming params can be parsed as a bunch of nested Groovy closures
     ),
 
     // Then ---------------------------------------------------------------
@@ -142,7 +118,8 @@ module.exports = grammar({
       $.config_stmt,
       $.options_stmt,
       $.tag_stmt,
-      $.script_stmt
+      $.script_stmt,
+      $.profile_stmt
     ),
 
     tag_stmt: $ => seq('tag', $.string),
@@ -151,6 +128,7 @@ module.exports = grammar({
     config_stmt: $ => seq('config', $.string),
     unit_stmt: $ => seq($.invocable_unit, $.string),
     name_stmt: $ => seq('name', $.string),
+    profile_stmt: $ => seq('profile', $.string),
 
     // Blocks --------------------------------------------------------------
     groovy_block: $ => seq('{', field('groovy', repeat(choice($.groovy_code, $.brace_block))), '}'),
@@ -162,11 +140,11 @@ module.exports = grammar({
     // Strings & identifiers ----------------------------------------------
     string: $ => choice($.double_string, $.single_string),
 
-    double_string: $ => seq('"', repeat(choice($.escape_sequence, /[^"\\\n]+/)), '"'),
-    single_string: $ => seq('\'', repeat(choice($.escape_sequence, /[^'\\\n]+/)), '\''),
-    triple_string: $ => seq('"""', repeat(/[^"""]*/), '"""'),
+    double_string: $ => seq('"', repeat(choice($.escape_sequence, /[^"\\\n]/)), '"'),
+    single_string: $ => seq('\'', repeat(choice($.escape_sequence, /[^'\\\n]/)), '\''),
+    triple_string: $ => seq('"""', repeat(choice($.escape_sequence, /[^"\\\n]/)), '"""'),
 
-    groovy_triple_string: $ => seq('"""', field('groovy', repeat(/[^"""]*/)), '"""'),
+    groovy_triple_string: $ => seq('"""', field('groovy', repeat(choice($.escape_sequence, /[^\\\n]/))), '"""'),
 
     escape_sequence: $ => token(seq('\\', /./)),
 
@@ -174,7 +152,7 @@ module.exports = grammar({
     double_quoted_identifier: $ => seq('"', field('identifier', $.identifier), '"'),
     single_quoted_identifier: $ => seq('\'', field('identifier', $.identifier), '\''),
 
-    identifier: $ => /[A-Za-z_][A-Za-z0-9_\-]*/,
+    identifier: $ => /[A-Za-z_][A-Za-z0-9_]*/,
     number: $ => /\d+(?:\.\d+)?/,
     invocable_unit: $ => choice('process', 'workflow', 'function'),
 

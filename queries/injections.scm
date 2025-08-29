@@ -2,6 +2,5 @@
   groovy: _ @injection.content
   (#set! injection.language "groovy"))
 
-((groovy_block)
-  groovy: _ @injection.content
+((groovy_block) @injection.content
   (#set! injection.language "groovy"))
