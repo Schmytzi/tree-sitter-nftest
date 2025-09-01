@@ -1,3 +1,4 @@
+; General, easy rules
 [
  "nextflow_process"
  "nextflow_workflow"
@@ -18,15 +19,27 @@
   "config"
   "profile"
   "script"
-] @keyword
+] @keyword.directive
+
+[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+[ "," "." ] @punctuation.delimiter
+
+(double_string) @string
+(single_string) @string
+(escape_sequence) @string.escape
+
+(line_comment) @comment
+(block_comment) @comment
+
+; Special nf-test strings whose quotes act as brackets
+(groovy_triple_string "\"\"\"" @punctuation.bracket)
+(double_quoted_identifier "\"" @punctuation.bracket)
+(single_quoted_identifier "'" @punctuation.bracket)
 
 (unit_stmt (invocable_unit) @keyword)
 
 (invocation type: (invocable_unit) @function.call )
-(quoted_identifier (_ identifier: (identifier) @local.definition) )
+(quoted_identifier (_ identifier: (identifier) @constant) )
 
-(double_string) @string
-(single_string) @string
-
-(line_comment) @comment
-(block_comment) @comment
+(script_stmt value: (string) @string.special.path)
+(config_stmt value: (string) @string.special.path)

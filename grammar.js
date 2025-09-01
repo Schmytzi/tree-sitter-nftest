@@ -126,7 +126,7 @@ module.exports = grammar({
     script_stmt: $ => seq('script', field('value', $.string)),
     options_stmt: $ => seq('options', field('value', $.string)),
     config_stmt: $ => seq('config', field('value', $.string)),
-    unit_stmt: $ => seq($.invocable_unit, field('value', $.string)),
+    unit_stmt: $ => seq($.invocable_unit, field('value', $.quoted_identifier)),
     name_stmt: $ => seq('name', field('value', $.string)),
     profile_stmt: $ => seq('profile', field('value', $.string)),
 
