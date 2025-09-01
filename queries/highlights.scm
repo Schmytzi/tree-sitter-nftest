@@ -1,8 +1,4 @@
 [
-  "script"
-] @keyword.import
-
-[
  "nextflow_process"
  "nextflow_workflow"
  "nextflow_pipeline"
@@ -15,10 +11,16 @@
  "params"
 ] @keyword.function
 
-( [(name_stmt) (unit_stmt) (tag_stmt) (options_stmt) (config_stmt) (profile_stmt) ]
-  (_) @keyword.directive
-  (string)
-)
+[
+  "options"
+  "tag"
+  "name"
+  "config"
+  "profile"
+  "script"
+] @keyword
+
+(unit_stmt (invocable_unit) @keyword)
 
 (invocation type: (invocable_unit) @function.call )
 (quoted_identifier (_ identifier: (identifier) @local.definition) )

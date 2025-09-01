@@ -5,7 +5,7 @@
 )
 (
   (groovy_triple_string) @injection.content
-  (#offset! @injection.conent 0 1 0 -1)
+  (#offset! @injection.content 3 0 -3 0)
   (#set! injection.language "groovy")
   (#set! injection.include-children)
 )
