@@ -122,13 +122,13 @@ module.exports = grammar({
       $.profile_stmt
     ),
 
-    tag_stmt: $ => seq('tag', $.string),
-    script_stmt: $ => seq('script', $.string),
-    options_stmt: $ => seq('options', $.string),
-    config_stmt: $ => seq('config', $.string),
-    unit_stmt: $ => seq($.invocable_unit, $.string),
-    name_stmt: $ => seq('name', $.string),
-    profile_stmt: $ => seq('profile', $.string),
+    tag_stmt: $ => seq('tag', field('value', $.string)),
+    script_stmt: $ => seq('script', field('value', $.string)),
+    options_stmt: $ => seq('options', field('value', $.string)),
+    config_stmt: $ => seq('config', field('value', $.string)),
+    unit_stmt: $ => seq($.invocable_unit, field('value', $.string)),
+    name_stmt: $ => seq('name', field('value', $.string)),
+    profile_stmt: $ => seq('profile', field('value', $.string)),
 
     // Blocks --------------------------------------------------------------
     groovy_block: $ => seq('{', field('groovy', repeat(choice($.groovy_code, $.brace_block))), '}'),
