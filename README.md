@@ -36,3 +36,4 @@ Using [NeoVim](https://neovim.io) and [nvim-treesitter](https://github.com/nvim-
 3. Run `:TSInstall nftest`
 4. Copy queries to your runtime path, subdirectory `queries/nftest`
 
+Code screenshots are from [genomic-medicine-sweden/Nallo](https://github.com/genomic-medicine-sweden/nallo).
