@@ -1,7 +1,7 @@
 # tree-sitter-nftest
 Syntax highlighting for nf-test that actually works!
 
-![before]("docs/img/before.png") ![after]("docs/img/after.png")
+![before](docs/img/before.png) ![after](docs/img/after.png)
 
 Left: Syntax highlighting of [nextflow-io/vim-language-nextflow](https://github.com/nextflow-io/vim-language-nextflow).
 Right: Syntax highlighting of [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and tree-sitter-nftest.
