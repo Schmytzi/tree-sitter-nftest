@@ -7,4 +7,8 @@
   )
 )
 
-(unit_stmt value: ((identifier) @local.defintion.import ) (#set! definition.var.scope "global"))
+(unit_stmt
+  value: (quoted_identifier
+    (_ identifier: ((identifier) @local.defintion.import ) (#set! definition.var.scope "global"))
+  )
+)
