@@ -1,10 +1,11 @@
 # tree-sitter-nftest
 Syntax highlighting for nf-test that actually works!
 
-![before](docs/img/before.png) ![after](docs/img/after.png)
+Before ([nextflow-io/vim-language-nextflow](https://github.com/nextflow-io/vim-language-nextflow)):
+![before](docs/img/before.png) 
 
-Left: Syntax highlighting of [nextflow-io/vim-language-nextflow](https://github.com/nextflow-io/vim-language-nextflow).
-Right: Syntax highlighting of [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and tree-sitter-nftest.
+After ([nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) and tree-sitter-nftest):
+![after](docs/img/after.png)
 
 ## Installation
 Using [NeoVim](https://neovim.io) and [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter):
