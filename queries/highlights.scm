@@ -21,8 +21,8 @@
   "script"
 ] @keyword.directive
 
-[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
-[ "," "." ] @punctuation.delimiter
+[ "(" ")" "{" "}" ] @punctuation.bracket
+[ "," ":" ] @punctuation.delimiter
 
 (double_string) @string
 (single_string) @string
