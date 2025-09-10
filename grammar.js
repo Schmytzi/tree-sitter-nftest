@@ -135,21 +135,56 @@ module.exports = grammar({
     // Blocks --------------------------------------------------------------
     // We handle braces spearately to make sure they are matched
     // However, that requires us to add a special case for strings in case they contain braces
-    groovy_block: $ => seq('{', field('groovy', repeat(choice($.groovy_code, $.brace_block, $.string))), '}'),
+    groovy_block: $ => seq('{', field('groovy', prec.left(repeat(choice($.groovy_code, $.brace_block, $.string)))), '}'),
 
     groovy_code: $ => /[^{}"']+/, // permissive, inject as Groovy via queries
 
-    brace_block: $ => seq('{', repeat(choice($.groovy_code, $.brace_block, $.string)), '}'),
+    brace_block: $ => seq('{', prec.left(repeat(choice($.groovy_code, $.brace_block, $.string))), '}'),
 
     // Strings & identifiers ----------------------------------------------
     string: $ => choice($.double_string, $.single_string),
 
-    double_string: $ => seq('"', repeat(choice($.escape_sequence, /[^"\\\n]/)), '"'),
-    single_string: $ => seq('\'', repeat(choice($.escape_sequence, /[^'\\\n]/)), '\''),
-    triple_single_string: $ => seq('\'\'\'', repeat(choice($.escape_sequence, /[^"\\]/)), '\'\'\''),
-    triple_double_string: $ => seq('"""', repeat(choice($.escape_sequence, /[^"\\]/)), '"""'),
+    double_string: $ => seq(
+      '"',
+      repeat(choice(
+        $.escape_sequence,
+        token.immediate(prec(1,/[^"\\\n]/))
+      )),
+      '"'
+    ),
+    single_string: $ => seq(
+      '\'',
+      repeat(choice(
+        $.escape_sequence,
+        token.immediate(prec(1, /[^'\\\n]/))
+      )),
+      '\''
+    ),
+    triple_single_string: $ => seq(
+      '\'\'\'',
+      repeat(choice(
+        $.escape_sequence,
+        token.immediate(prec(1, /[^"\\]/))
+      )),
+      '\'\'\''
+    ),
+    triple_double_string: $ => seq(
+      '"""',
+      repeat(choice(
+        $.escape_sequence,
+        token.immediate(prec(1, /[^"\\]/))
+      )),
+      '"""'
+    ),
 
-    groovy_triple_string: $ => seq('"""', field('groovy', prec.left(repeat(choice($.escape_sequence, /[^\\]/)))), '"""'),
+    groovy_triple_string: $ => seq(
+      '"""',
+      field('groovy', prec.left(repeat(choice(
+        $.escape_sequence,
+        /[^\\]/
+      )))),
+      '"""'
+    ),
 
     escape_sequence: $ => token(seq('\\', /./)),
 
