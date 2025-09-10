@@ -19,7 +19,21 @@ module.exports = grammar({
 
   rules: {
     // Entry ---------------------------------------------------------------
-    source_file: $ => $.suite,
+    source_file: $ => seq(
+      field("prelude", repeat($.import)),
+      field("suite", $.suite)
+    ),
+
+    // Groovy import
+    import: $ => seq(
+      'import',
+      optional(choice('static', 'final', 'synchronized')),
+      field('import', seq($.identifier, repeat(seq('.', $.identifier)))),
+      optional(choice(
+        seq('.', token.immediate("*")),
+        seq('as', field('alias', $.identifier))
+      ))
+    ),
 
     suite: $ => seq(
       choice('nextflow_process', 'nextflow_workflow', 'nextflow_pipeline', 'nextflow_function'),
@@ -136,11 +150,13 @@ module.exports = grammar({
     // Blocks --------------------------------------------------------------
     // We handle braces spearately to make sure they are matched
     // However, that requires us to add a special case for strings in case they contain braces
-    groovy_block: $ => seq('{', field('groovy', prec.left(repeat(choice($.groovy_code, $.brace_block, $.string)))), '}'),
+    groovy_block: $ => seq('{', field('groovy', $.groovy_body), '}'),
 
     groovy_code: $ => /[^{}"']+/, // permissive, inject as Groovy via queries
 
-    brace_block: $ => seq('{', prec.left(repeat(choice($.groovy_code, $.brace_block, $.string))), '}'),
+    brace_block: $ => seq('{', $.groovy_body, '}'),
+
+    groovy_body: $ => prec.left(repeat1(choice($.groovy_code, $.brace_block, $.string))),
 
     // Strings & identifiers ----------------------------------------------
     string: $ => choice($.double_string, $.single_string),

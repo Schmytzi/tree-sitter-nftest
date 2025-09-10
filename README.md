@@ -36,4 +36,7 @@ Using [NeoVim](https://neovim.io) and [nvim-treesitter](https://github.com/nvim-
 3. Run `:TSInstall nftest`
 4. Copy queries to your runtime path, subdirectory `queries/nftest`
 
+## Attribution
 Code screenshots are from [nf-core/modules](https://github.com/nf-core/modules).
+
+Rule for import statements adapted from [murtaza64/tree-sitter-groovy](https://github.com/murtaza64/tree-sitter-groovy).
