@@ -5,9 +5,11 @@ nextflow_pipeline {
 
 }
 ---
+
 (source_file
   (suite
     (suite_block)))
+
 ====
 Nextflow workflow
 ====
@@ -15,9 +17,11 @@ nextflow_workflow {
 
 }
 ---
+
 (source_file
   (suite
     (suite_block)))
+
 ===
 Nextflow process
 ===
@@ -25,6 +29,7 @@ nextflow_process {
 
 }
 ---
+
 (source_file
   (suite
     (suite_block)))
@@ -36,6 +41,25 @@ nextflow_function {
 
 }
 ---
+
 (source_file
+  (suite
+    (suite_block)))
+
+===
+Import
+===
+import static groovy.io.FileType as FileType
+nextflow_workflow {
+
+}
+---
+
+(source_file
+  (import
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier))
   (suite
     (suite_block)))

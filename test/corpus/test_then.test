@@ -39,7 +39,8 @@ nextflow_process {
             (double_string)))
         (then_block
           (groovy_block
-            (groovy_code)))))))
+            (groovy_body
+              (groovy_code))))))))
 
 ===
 Test with assertAll
@@ -65,13 +66,16 @@ nextflow_process {
             (double_string)))
         (then_block
           (groovy_block
-            (groovy_code)
-            (brace_block
-              (groovy_code))
-            (groovy_code)
-            (brace_block
-              (groovy_code))
-            (groovy_code)))))))
+            (groovy_body
+              (groovy_code)
+              (brace_block
+                (groovy_body
+                  (groovy_code)))
+              (groovy_code)
+              (brace_block
+                (groovy_body
+                  (groovy_code)))
+              (groovy_code))))))))
 
 ===
 Test with complex then
@@ -99,22 +103,25 @@ nextflow_process {
             (double_string)))
         (then_block
           (groovy_block
-            (groovy_code)
-            (string
-              (double_string))
-            (groovy_code)
-            (string
-              (double_string))
-            (groovy_code)
-            (brace_block
+            (groovy_body
               (groovy_code)
               (string
-                (single_string))
-              (groovy_code))
-            (groovy_code)
-            (brace_block
+                (double_string))
               (groovy_code)
               (string
-                (single_string))
-              (groovy_code))
-            (groovy_code)))))))
+                (double_string))
+              (groovy_code)
+              (brace_block
+                (groovy_body
+                  (groovy_code)
+                  (string
+                    (single_string))
+                  (groovy_code)))
+              (groovy_code)
+              (brace_block
+                (groovy_body
+                  (groovy_code)
+                  (string
+                    (single_string))
+                  (groovy_code)))
+              (groovy_code))))))))

@@ -28,7 +28,7 @@ module.exports = grammar({
     import: $ => seq(
       'import',
       optional(choice('static', 'final', 'synchronized')),
-      field('import', seq($.identifier, repeat(seq('.', $.identifier)))),
+      field('import', alias(seq($.identifier, repeat(seq('.', $.identifier))), $.qualified_identifier)),
       optional(choice(
         seq('.', token.immediate("*")),
         seq('as', field('alias', $.identifier))
@@ -150,11 +150,11 @@ module.exports = grammar({
     // Blocks --------------------------------------------------------------
     // We handle braces spearately to make sure they are matched
     // However, that requires us to add a special case for strings in case they contain braces
-    groovy_block: $ => seq('{', field('groovy', $.groovy_body), '}'),
+    groovy_block: $ => seq('{', optional(field('groovy', $.groovy_body)), '}'),
 
     groovy_code: $ => /[^{}"']+/, // permissive, inject as Groovy via queries
 
-    brace_block: $ => seq('{', $.groovy_body, '}'),
+    brace_block: $ => seq('{', optional($.groovy_body), '}'),
 
     groovy_body: $ => prec.left(repeat1(choice($.groovy_code, $.brace_block, $.string))),
 

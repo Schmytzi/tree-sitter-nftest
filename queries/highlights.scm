@@ -22,7 +22,17 @@
   "script"
   "config"
   "profile"
+  "import"
+  "as"
 ] @keyword.import
+
+[
+  "static"
+  "synchronized"
+  "final"
+] @keyword.modifier
+
+(import "*" @keyword.import)
 
 (unit_stmt (invocable_unit) @keyword.import)
 

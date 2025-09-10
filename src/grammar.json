@@ -669,12 +669,20 @@
           "value": "{"
         },
         {
-          "type": "FIELD",
-          "name": "groovy",
-          "content": {
-            "type": "SYMBOL",
-            "name": "groovy_body"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "groovy",
+              "content": {
+                "type": "SYMBOL",
+                "name": "groovy_body"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -694,8 +702,16 @@
           "value": "{"
         },
         {
-          "type": "SYMBOL",
-          "name": "groovy_body"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "groovy_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",

@@ -52,25 +52,27 @@ nextflow_process {
         (when_block
           (params_block
             (groovy_block
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)
-              (brace_block
+              (groovy_body
                 (groovy_code)
                 (string
                   (double_string))
                 (groovy_code)
                 (string
                   (double_string))
-                (groovy_code))
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code))))))))
+                (groovy_code)
+                (brace_block
+                  (groovy_body
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)))))))))
 
 ===
 When with empty invocation
@@ -168,25 +170,27 @@ nextflow_function {
         (when_block
           (params_block
             (groovy_block
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)
-              (brace_block
+              (groovy_body
                 (groovy_code)
                 (string
                   (double_string))
                 (groovy_code)
                 (string
                   (double_string))
-                (groovy_code))
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)))
+                (groovy_code)
+                (brace_block
+                  (groovy_body
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code))))
           (invocation
             (invocable_unit)
             (groovy_triple_string)))))))
@@ -233,22 +237,24 @@ nextflow_workflow {
             (groovy_triple_string))
           (params_block
             (groovy_block
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code)
-              (brace_block
+              (groovy_body
                 (groovy_code)
                 (string
                   (double_string))
                 (groovy_code)
                 (string
                   (double_string))
-                (groovy_code))
-              (groovy_code)
-              (string
-                (double_string))
-              (groovy_code))))))))
+                (groovy_code)
+                (brace_block
+                  (groovy_body
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)))))))))

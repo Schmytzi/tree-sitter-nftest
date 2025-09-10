@@ -12,3 +12,11 @@
     (_ identifier: ((identifier) @local.defintion.import ) (#set! definition.var.scope "global"))
   )
 )
+
+(import
+  import: ((qualified_identifier) @local.defintion.import) (#set! definition.var.scope "global")
+)
+
+(import
+  alias: ((identifier) @local.defintion.import) (#set! definition.var.scope "global")
+)

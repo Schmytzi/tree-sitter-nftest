@@ -5,7 +5,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "groovy_body",
@@ -67,7 +67,7 @@
     "fields": {
       "groovy": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "groovy_body",
