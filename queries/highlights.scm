@@ -16,10 +16,15 @@
   "options"
   "tag"
   "name"
+] @keyword.directive
+
+[
+  "script"
   "config"
   "profile"
-  "script"
-] @keyword.directive
+] @keyword.import
+
+(unit_stmt (invocable_unit) @keyword.import)
 
 [ "(" ")" "{" "}" ] @punctuation.bracket
 [ "," ":" ] @punctuation.delimiter
@@ -36,7 +41,6 @@
 (double_quoted_identifier "\"" @punctuation.bracket)
 (single_quoted_identifier "'" @punctuation.bracket)
 
-(unit_stmt (invocable_unit) @keyword)
 
 (invocation type: (invocable_unit) @function.call )
 (quoted_identifier (_ identifier: (identifier) @constant) )
