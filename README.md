@@ -26,7 +26,7 @@ Using [NeoVim](https://neovim.io) and [nvim-treesitter](https://github.com/nvim-
      },
    }
 
-   -- Add filetype
+   -- Add filetype autodetect
    vim.filetype.add({
        pattern = {
            [".*%.nf%.test"] = "nftest"
