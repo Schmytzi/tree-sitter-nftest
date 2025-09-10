@@ -1,0 +1,87 @@
+========
+Empty Setup
+========
+nextflow_process {
+  setup {
+
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (setup_block))))
+
+===
+Simple run
+===
+nextflow_process {
+  setup {
+    run("TEST") {
+      script "../workflow/main.nf"
+      process {
+        """
+        This is completely opaque to us.
+        Test double quote: "
+        Test unmatched brace: {
+        """
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (setup_block
+        (run_block
+          (run_header
+            (quoted_identifier
+              (double_quoted_identifier
+                (identifier))))
+          (script_stmt
+            (string
+              (double_string)))
+          (invocation
+            (invocable_unit)
+            (groovy_triple_string)))))))
+
+===
+Aliased run
+===
+nextflow_process {
+  setup {
+    run("TEST", alias: "TEST2") {
+      script "../workflow/main.nf"
+      process {
+        """
+        This is completely opaque to us.
+        Test double quote: "
+        Test unmatched brace: {
+        """
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (setup_block
+        (run_block
+          (run_header
+            (quoted_identifier
+              (double_quoted_identifier
+                (identifier)))
+            (quoted_identifier
+              (double_quoted_identifier
+                (identifier))))
+          (script_stmt
+            (string
+              (double_string)))
+          (invocation
+            (invocable_unit)
+            (groovy_triple_string)))))))

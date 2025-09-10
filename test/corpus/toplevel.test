@@ -1,0 +1,41 @@
+=====
+Nextflow Pipeline
+=====
+nextflow_pipeline {
+
+}
+---
+(source_file
+  (suite
+    (suite_block)))
+====
+Nextflow workflow
+====
+nextflow_workflow {
+
+}
+---
+(source_file
+  (suite
+    (suite_block)))
+===
+Nextflow process
+===
+nextflow_process {
+
+}
+---
+(source_file
+  (suite
+    (suite_block)))
+
+===
+Nextflow function
+===
+nextflow_function {
+
+}
+---
+(source_file
+  (suite
+    (suite_block)))

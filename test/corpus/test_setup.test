@@ -1,0 +1,15 @@
+===
+Test with setup block
+===
+nextflow_process {
+  test("TEST") {
+    setup {
+      script "../main.nf"
+      process {
+        """
+        This is opaque and we inject Groovy here.
+        """
+      }
+    }
+  }
+}

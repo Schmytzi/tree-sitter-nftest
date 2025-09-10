@@ -1,0 +1,120 @@
+===
+Test with empty then
+===
+nextflow_process {
+  test("TEST"){
+    then {}
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (then_block
+          (groovy_block))))))
+
+===
+Test with single assertion
+===
+nextflow_process {
+  test("TEST") {
+    then {
+      assert true
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (then_block
+          (groovy_block
+            (groovy_code)))))))
+
+===
+Test with assertAll
+===
+nextflow_process {
+  test("TEST") {
+    then {
+      assertAll(
+        { assert true },
+        { assert 1 == 2}
+      )
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (then_block
+          (groovy_block
+            (groovy_code)
+            (brace_block
+              (groovy_code))
+            (groovy_code)
+            (brace_block
+              (groovy_code))
+            (groovy_code)))))))
+
+===
+Test with complex then
+===
+nextflow_process {
+  test("TEST") {
+    then {
+      def closing_brace = "}"
+      def opening_brace = "{"
+      assertAll(
+        { assert closing_brace == '}' },
+        { assert opening_brace == '{' }
+      )
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (then_block
+          (groovy_block
+            (groovy_code)
+            (string
+              (double_string))
+            (groovy_code)
+            (string
+              (double_string))
+            (groovy_code)
+            (brace_block
+              (groovy_code)
+              (string
+                (single_string))
+              (groovy_code))
+            (groovy_code)
+            (brace_block
+              (groovy_code)
+              (string
+                (single_string))
+              (groovy_code))
+            (groovy_code)))))))

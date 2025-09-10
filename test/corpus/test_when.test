@@ -1,0 +1,254 @@
+===
+When with empty params
+===
+nextflow_process {
+  test("TEST") {
+    when {
+      params {}
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block
+          (params_block
+            (groovy_block)))))))
+
+===
+When with params
+===
+nextflow_process {
+  test("TEST") {
+    when {
+      params {
+        top_level_param = "test"
+        closing_brace = "}"
+        nested_params {
+          closing_brace = "}"
+          nested_param = 0
+          opening_brace = "{"
+        }
+        opening_brace = "{"
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block
+          (params_block
+            (groovy_block
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)
+              (brace_block
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code))
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code))))))))
+
+===
+When with empty invocation
+===
+nextflow_process {
+  test("TEST") {
+    when {
+      process {
+        """"""
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block
+          (invocation
+            (invocable_unit)
+            (groovy_triple_string)))))))
+
+===
+When with invocation
+===
+nextflow_process {
+  test("TEST") {
+    when {
+      process {
+        """
+        Unmatched closing brace: }
+        This is opaque to us but we assume it's Groovy.
+        Double quote: "
+        Unmatched brace: {
+        """
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block
+          (invocation
+            (invocable_unit)
+            (groovy_triple_string)))))))
+
+===
+When with params, then invocation
+===
+nextflow_function {
+  test("TEST") {
+    when {
+      params {
+        top_level_param = "test"
+        closing_brace = "}"
+        nested_params {
+          closing_brace = "}"
+          nested_param = 0
+          opening_brace = "{"
+        }
+        opening_brace = "{"
+      }
+      function {
+        """
+        Unmatched closing brace: }
+        This is opaque to us but we assume it's Groovy.
+        Double quote: "
+        Unmatched brace: {
+        """
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block
+          (params_block
+            (groovy_block
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)
+              (brace_block
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code))
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)))
+          (invocation
+            (invocable_unit)
+            (groovy_triple_string)))))))
+
+===
+When with invocation, then params
+===
+nextflow_workflow {
+  test("TEST") {
+    when {
+      workflow {
+        """
+        Unmatched closing brace: }
+        This is opaque to us but we assume it's Groovy.
+        Double quote: "
+        Unmatched brace: {
+        """
+      }
+      params {
+        top_level_param = "test"
+        closing_brace = "}"
+        nested_params {
+          closing_brace = "}"
+          nested_param = 0
+          opening_brace = "{"
+        }
+        opening_brace = "{"
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block
+          (invocation
+            (invocable_unit)
+            (groovy_triple_string))
+          (params_block
+            (groovy_block
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code)
+              (brace_block
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code))
+              (groovy_code)
+              (string
+                (double_string))
+              (groovy_code))))))))

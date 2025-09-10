@@ -1,0 +1,149 @@
+===
+Name Statememt
+===
+nextflow_process {
+  name "testsuite"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (name_stmt
+          (string
+            (double_string)))))))
+
+===
+Process Statememt
+===
+nextflow_process {
+  process "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (unit_stmt
+          (invocable_unit)
+          (quoted_identifier
+            (double_quoted_identifier
+              (identifier))))))))
+
+===
+Workflow Statememt
+===
+nextflow_workflow {
+  workflow "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (unit_stmt
+          (invocable_unit)
+          (quoted_identifier
+            (double_quoted_identifier
+              (identifier))))))))
+
+===
+Function Statememt
+===
+nextflow_function {
+  function "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (unit_stmt
+          (invocable_unit)
+          (quoted_identifier
+            (double_quoted_identifier
+              (identifier))))))))
+
+===
+Config Statement
+===
+nextflow_function {
+  config "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (config_stmt
+          (string
+            (double_string)))))))
+
+===
+Options Statememt
+===
+nextflow_function {
+  options "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (options_stmt
+          (string
+            (double_string)))))))
+
+===
+Script Statememt
+===
+nextflow_function {
+  script "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (script_stmt
+          (string
+            (double_string)))))))
+
+===
+Tag Statememt
+===
+nextflow_function {
+  tag "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (tag_stmt
+          (string
+            (double_string)))))))
+
+===
+Profile Statememt
+===
+nextflow_function {
+  profile "test"
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (top_level_declaration
+        (profile_stmt
+          (string
+            (double_string)))))))

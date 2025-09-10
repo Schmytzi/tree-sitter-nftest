@@ -1,0 +1,80 @@
+===
+Empty Test
+===
+nextflow_process {
+  test("TEST") {
+
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))))))
+
+===
+Test Tag Statement
+===
+nextflow_process {
+  test("TEST") {
+    tag "test"
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (tag_stmt
+          (string
+            (double_string)))))))
+
+===
+Test Options Statement
+===
+nextflow_process {
+  test("TEST") {
+    options "test"
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (options_stmt
+          (string
+            (double_string)))))))
+
+===
+Test Config Statement
+===
+nextflow_process {
+  test("TEST") {
+    config "test.conf"
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (config_stmt
+          (string
+            (double_string)))))))
