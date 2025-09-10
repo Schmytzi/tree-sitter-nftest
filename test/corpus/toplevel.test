@@ -57,9 +57,10 @@ nextflow_workflow {
 
 (source_file
   (import
-    (identifier)
-    (identifier)
-    (identifier)
+    (qualified_identifier)
+    (qualified_identifier
+      (identifier)
+      (identifier))
     (identifier))
   (suite
     (suite_block)))

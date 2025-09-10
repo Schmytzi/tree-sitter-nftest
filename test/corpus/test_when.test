@@ -1,4 +1,25 @@
 ===
+Empty when
+===
+nextflow_workflow {
+  test("TEST") {
+    when {
+
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (test_block
+        (test_header
+          (string
+            (double_string)))
+        (when_block)))))
+
+===
 When with empty params
 ===
 nextflow_process {

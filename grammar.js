@@ -102,12 +102,11 @@ module.exports = grammar({
     // When ----------------------------------------------------------------
     when_block: $ => seq(
       'when', '{',
-      choice(
+      repeat(choice(
+        $.config_stmt,
         $.params_block,
-        $.invocation,
-        seq($.params_block, $.invocation),
-        seq($.invocation, $.params_block)
-      ),
+        $.invocation
+      )),
       '}'
     ),
 
