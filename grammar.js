@@ -62,6 +62,7 @@ module.exports = grammar({
       $.run_header,
       '{',
       repeat(choice(
+        $.params_block,
         $.invocation,
         $.script_stmt,
         $.config_stmt
@@ -202,7 +203,7 @@ module.exports = grammar({
       '"""'
     ),
 
-    escape_sequence: $ => token(seq('\\', /./)),
+    escape_sequence: $ => /\\(.|\n)/,
 
     quoted_identifier: $ => choice($.double_quoted_identifier, $.single_quoted_identifier),
     double_quoted_identifier: $ => seq('"', field('identifier', $.identifier), '"'),

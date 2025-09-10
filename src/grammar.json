@@ -256,6 +256,10 @@
             "members": [
               {
                 "type": "SYMBOL",
+                "name": "params_block"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "invocation"
               },
               {
@@ -924,20 +928,8 @@
       ]
     },
     "escape_sequence": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "\\"
-          },
-          {
-            "type": "PATTERN",
-            "value": "."
-          }
-        ]
-      }
+      "type": "PATTERN",
+      "value": "\\\\(.|\\n)"
     },
     "quoted_identifier": {
       "type": "CHOICE",

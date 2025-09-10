@@ -85,3 +85,109 @@ nextflow_process {
           (invocation
             (invocable_unit)
             (groovy_triple_string)))))))
+
+===
+Run with config
+===
+nextflow_process {
+  setup {
+    run("TEST") {
+      config "test"
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (setup_block
+        (run_block
+          (run_header
+            (quoted_identifier
+              (double_quoted_identifier
+                (identifier))))
+          (config_stmt
+            (string
+              (double_string))))))))
+
+===
+Run with params
+===
+nextflow_process {
+  setup {
+    run("TEST") {
+      params {
+        closing_brace = "}"
+        nested_params {
+          parameter = "test"
+          closing_brace = "}"
+          opening_brace = "{"
+        }
+        opening_brace = "{"
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (setup_block
+        (run_block
+          (run_header
+            (quoted_identifier
+              (double_quoted_identifier
+                (identifier))))
+          (params_block
+            (groovy_block
+              (groovy_body
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)
+                (brace_block
+                  (groovy_body
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)
+                    (string
+                      (double_string))
+                    (groovy_code)))
+                (groovy_code)
+                (string
+                  (double_string))
+                (groovy_code)))))))))
+
+===
+Run with empty params
+===
+nextflow_process {
+  setup {
+    run("TEST") {
+      params {
+
+      }
+    }
+  }
+}
+---
+
+(source_file
+  (suite
+    (suite_block
+      (setup_block
+        (run_block
+          (run_header
+            (quoted_identifier
+              (double_quoted_identifier
+                (identifier))))
+          (params_block
+            (groovy_block
+              (groovy_body
+                (groovy_code)))))))))

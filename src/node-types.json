@@ -287,6 +287,10 @@
           "named": true
         },
         {
+          "type": "params_block",
+          "named": true
+        },
+        {
           "type": "run_header",
           "named": true
         },
