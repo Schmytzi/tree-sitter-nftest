@@ -47,10 +47,11 @@ module.exports = grammar({
     run_block: $ => seq(
       $.run_header,
       '{',
-      choice(
-        seq($.script_stmt, $.invocation),
-        seq($.invocation, $.script_stmt)
-      ),
+      repeat(choice(
+        $.invocation,
+        $.script_stmt,
+        $.config_stmt
+      )),
       '}',
     ),
 

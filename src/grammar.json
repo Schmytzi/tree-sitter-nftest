@@ -116,35 +116,24 @@
           "value": "{"
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "script_stmt"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "invocation"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "invocation"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "script_stmt"
-                }
-              ]
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "invocation"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "script_stmt"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "config_stmt"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",

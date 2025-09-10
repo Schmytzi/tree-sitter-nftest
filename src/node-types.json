@@ -231,6 +231,10 @@
       "required": true,
       "types": [
         {
+          "type": "config_stmt",
+          "named": true
+        },
+        {
           "type": "invocation",
           "named": true
         },
